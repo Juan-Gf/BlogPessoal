@@ -3,16 +3,18 @@ import { PostagemService } from "../services/postagem.service";
 import { Postagem } from "../entities/postagem.entity";
 import { promises } from "dns";
 import { DeleteResult } from "typeorm";
+import { TemaService } from "../../tema/services/tema.service";
 
 @Controller("/postagens") // Indica que essa classe é uma Controller
 export class PostagemController {
 
-    constructor(private readonly postagemService: PostagemService) {}
+    constructor(
+        private readonly postagemService: PostagemService) {}
 
     @Get() // Indica qual tipo de requisição esse metodo é executado - GET
     @HttpCode(HttpStatus.OK) // Monta a resposta do HTTP para o Front com o status 200
     findAll(): Promise<Postagem[]> {
-        return this.postagemService.findAll();
+        return this.postagemService.findAll()
     }
 
     @Get("/:id") // Indica qual tipo de requisição esse metodo é executado - GET

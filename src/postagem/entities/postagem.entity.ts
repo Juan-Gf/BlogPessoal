@@ -1,6 +1,7 @@
 import { IsNotEmpty } from "class-validator"
 import { ColdObservable } from "rxjs/internal/testing/ColdObservable"
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Tema } from "../../tema/entities/tema.entity"
 
 
 @Entity({ name: "tb_postagem" }) // Indicando que a classe é uma entidade/model
@@ -20,4 +21,8 @@ export class Postagem{ // Exportanto a Classe Postagem
     @UpdateDateColumn() // O proprio banco realiza a criação da data, se atualizar ele substitui com a nova
     date: Date
 
+    @ManyToOne(() => Tema, (tema) => tema.postagem,{
+        onDelete: "CASCADE"
+    })
+    tema: Tema
 }
