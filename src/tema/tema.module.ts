@@ -9,8 +9,7 @@ import { TemaService } from "./services/tema.service";
     imports: [TypeOrmModule.forFeature([Tema])],
     controllers: [TemaController],
     providers: [TemaService],
-    exports: [TemaService]
+    exports: [TypeOrmModule]
 })
-
-    export class TemaModule {}
+export class TemaModule {}
 

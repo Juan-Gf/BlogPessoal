@@ -24,6 +24,4 @@ import { TemaModule } from './tema/tema.module';
   controllers: [],
   providers: [],
 })
-
-// Exportando a classe AppModule
-export class AppModule {}
+export class AppModule {} // Exportando a classe AppModule
