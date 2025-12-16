@@ -3,9 +3,12 @@ import { PostagemService } from "../services/postagem.service";
 import { Postagem } from "../entities/postagem.entity";
 import { DeleteResult } from "typeorm";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Postagem')
 @UseGuards(JwtAuthGuard)  // Colocando essa Anotação aqui, indica que todos os endpoints são protegidos
 @Controller("/postagens") // Indica que essa classe é uma Controller
+@ApiBearerAuth()
 export class PostagemController {
 
     constructor(
@@ -41,7 +44,6 @@ export class PostagemController {
     // @Put() Indica que esse método lida com Requisições do Tipo Put
     // @Body() Captura/Extrai o objeto que vem pelo Corpo da Requisição e passa para parametro do método 
     @Put()// Usado quando queremos Atualizar alguma informação
-    @Put()
     @HttpCode(HttpStatus.OK)
     updatePost(@Body() postagem: Postagem): Promise<Postagem>{
         return this.postagemService.updatePost(postagem)
@@ -50,7 +52,7 @@ export class PostagemController {
     // @Delete('/:ID') Indica que esse método lida com Requisições do Tipo DELETE e que no seu endpoint será enviado um id como parametro
     // @Param captura o paramêtro envia pelo endpoint e o atribui ao parametro do método delete(id:number)
     // ParseIntPipe converte o parametro do endpoint de string para int. Ex: id: '1' => id: 1    @Delete("/:id")
-     @Delete('/:id')
+    @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
     deletePost(@Param("id", ParseIntPipe) id: number): Promise<DeleteResult>{
         return this.postagemService.delelePost(id)

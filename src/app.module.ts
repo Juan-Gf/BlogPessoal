@@ -7,6 +7,7 @@ import { TemaModule } from './tema/tema.module';
 import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { Usuario } from './usuario/entities/usuario.entity';
+import { AppController } from './app.controller';
 
 // Decorator - Etiqueta de Meta dados
 @Module({
@@ -26,7 +27,7 @@ import { Usuario } from './usuario/entities/usuario.entity';
     AuthModule,
     UsuarioModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {} // Exportando a classe AppModule
