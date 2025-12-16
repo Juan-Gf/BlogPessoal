@@ -8,10 +8,12 @@ import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { AppController } from './app.controller';
+import { ConfigModule } from '@nestjs/config';
 
 // Decorator - Etiqueta de Meta dados
 @Module({
   imports: [ // Configurando o TypeORM  
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
