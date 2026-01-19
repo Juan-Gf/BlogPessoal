@@ -27,13 +27,13 @@ export class Postagem{ // Exportanto a Classe Postagem
     @UpdateDateColumn() // O proprio banco realiza a criação da data, se atualizar ele substitui com a nova
     date: Date
 
-    @ApiProperty()  
+    @ApiProperty({ type: () => Tema })   
     @ManyToOne(() => Tema, (tema) => tema.postagem,{
        onDelete: "CASCADE"
     })
     tema: Tema
 
-    @ApiProperty()  
+    @ApiProperty({ type: () => Usuario })
     @ManyToOne(() => Usuario, (usuario) => usuario.postagem,{
         onDelete: "CASCADE"
     })
