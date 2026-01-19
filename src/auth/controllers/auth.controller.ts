@@ -9,7 +9,9 @@ import { ApiTags } from "@nestjs/swagger";
 export class AuthController {
     constructor(private authService: AuthService){}
 
+   
     // Anotação que indica que usaremos uma classe de validação especial (Guard)
+    @UseGuards(LocalAuthGuard)
     @HttpCode(HttpStatus.OK)
     @Post('/logar')
     login(@Body() usuario: UsuarioLogin): Promise<any> {
