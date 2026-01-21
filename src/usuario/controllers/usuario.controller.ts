@@ -36,14 +36,14 @@ export class UsuarioController{
     }
 
     // Essa rota estará desprotegida de JWT
-    @Post("/:cadastar")
+    @Post("/cadastar")
     @HttpCode(HttpStatus.CREATED)
     createUsuario(@Body() usuario: Usuario): Promise<Usuario>{
         return this.usuarioService.createUsuario(usuario)
     }
 
     @UseGuards(JwtAuthGuard)
-    @Put("/:atualizar")
+    @Put("/atualizar")
     @HttpCode(HttpStatus.OK)
     updateUsuario(@Body() usuario: Usuario): Promise<Usuario>{
         return this.usuarioService.updateUsuario(usuario)
